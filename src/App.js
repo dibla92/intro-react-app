@@ -6,10 +6,25 @@ import Timer from './Timer';
 import './App.css';
 // lezione 11
 const happy = <h2>sono felice</h2>
-function getDate(date) {
-  return <h2> Today is {date.toLocaleDateString() + ' ' + date.toLocaleTimeString()}</h2>
-}
+const clocks = [
+  {
+    secs: 1, country:"Italy", timezone:0
+  },
+  {
+    secs: 2, country:"Russia", timezone:2
+  },
+  {
+    secs: 3, country:"Cuba", timezone:-6
+  }
+]
 class App extends Component {
+
+  getCloks() {
+    return clocks.map( ({secs, country, timezone}) => {
+      return <Clock key={country} secs={secs} country={country} timezone={timezone} />
+    })
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -17,9 +32,9 @@ class App extends Component {
           <h1>ciaoo</h1>
       </div>
       {happy}
-      <Clock secs="1" timezone="0" country="Italia"/>
-      <Clock secs="2" timezone="2" country="Russia"/>
-      <Clock secs="3" timezone="-6" country="Cuba"></Clock>
+      <ul>
+      {this.getCloks()}
+      </ul>
       <br></br>
       <Timer></Timer>
 

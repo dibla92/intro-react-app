@@ -23,9 +23,10 @@ class Clock extends React.Component {
 
     // const tempo = this.state.date.getTime() + this.props.timezone*1000*3600;
     const data = new Date(tempo);
-    return <h2> In { this.props.country } is { data.toLocaleTimeString() }
+    return <li> In { this.props.country } is <br/>
+    <span className="clock">{ data.toLocaleTimeString() } </span><br/>
     <button onClick={this.toggleWatch}>{this.state.stopped ? 'Start' : 'Stop'}</button>
-    </h2>
+    </li>
     }
 
     toggleWatch = (e) => {
