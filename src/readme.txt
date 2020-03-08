@@ -1,0 +1,13 @@
+-- Ogni lettera maiuscola è interpretata come un componente
+-- props sono degli attributi del componente e vengono passate direttamente nel componente in cui viene dichiarato
+-- concetto di Stato
+-- l' attributo props è solo in lettura lo stato no (si puo cambiare)
+--il vantaggio della classe è che puo mantenere uno stato rispetto a una funzione
+    - classe deve avere il rendere() {} -funcion no
+--instanziando sul costruttore il super() ricevo come attributo nella propria classe il props, perciò non piu readonly
+--nel construttore in this.state è l' oggetto con cui possiamo avere lo stato
+--render viene chiamato QUANDO CAMBIA LO STATO, perciò mettere un interval dentro il render non ti permette di avere un aggiornamento live
+--se noi cambiamo una proprieta dello stato in automatico viene chiamato il metodo render
+-- http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+--componentdidmount viene chiamato dopo l' update del dom, mentre setState richiama il render
+--quando fai il setState fa un merge, e cambia solo i parametri effettivamente diversi
