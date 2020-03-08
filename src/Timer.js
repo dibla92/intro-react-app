@@ -1,30 +1,19 @@
 import React from 'react'
 
-class Clock extends React.Component {
+class Timer extends React.Component {
     constructor(props) {
         super(props);
-        const obj = {}
-        // this.toggleWatch = this.toggleWatch.bind(this);
-        /*this.state = {
-            date: new Date(),
-            timezone: 1
-        };*/
         this.state = {
-            timestamp: Date.now(),
-            date: new Date(),
-            timezone: 1,
+            date: new Date().setHours(0,0,0,0),
             stopped: false
         };
     }
 
     render() {
-    const d = new Date(this.state.timestamp);
-    const tempo = d.getTime() + this.props.timezone*1000*3600;
-
-    // const tempo = this.state.date.getTime() + this.props.timezone*1000*3600;
-    const data = new Date(tempo);
-    return <h2> In { this.props.country } is { data.toLocaleTimeString() }
+    const prova = new Date(this.state.date)
+    return <h2> Timer is { prova.toLocaleTimeString() }
     <button onClick={this.toggleWatch}>{this.state.stopped ? 'Start' : 'Stop'}</button>
+    <button onClick={this.stopWatch}>Clear</button>
     </h2>
     }
 
@@ -35,19 +24,24 @@ class Clock extends React.Component {
         })
     }
 
+    stopWatch = (e) => {
+        this.setState((state, props) => {
+            return {
+                date: new Date().setHours(0,0,0,0)
+            }
+        }) 
+    }
+
     tick = () => {
-        // this.setState({
-        //     date: new Date()
-        // });
         this.setState((precState, props) => {
             return {
-                timestamp: precState.timestamp + props.secs*1000
+                date: precState.date + 1000
             }
         })
     };
 
     startWatch() {
-        this.interval = setInterval(this.tick, this.props.secs*1000);
+        this.interval = setInterval(this.tick, 1000);
     }
 
     componentDidMount() {  //componente montato nel DOM
@@ -62,4 +56,4 @@ class Clock extends React.Component {
 
 }
 
-export default Clock;
+export default Timer;
